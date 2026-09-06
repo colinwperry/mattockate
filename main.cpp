@@ -3,10 +3,6 @@
 template <size_t Capacity>
 class StackAllocator
 {
-private:
-    alignas(std::max_align_t) std::byte buffer_[Capacity];
-    size_t offset_{0};
-
 public:
     void reset()
     {
@@ -32,4 +28,8 @@ public:
             return startingPoint;
         }
     }
+
+private:
+    alignas(std::max_align_t) std::byte buffer_[Capacity];
+    size_t offset_{0};
 };
